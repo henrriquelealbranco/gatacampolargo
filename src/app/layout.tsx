@@ -3,15 +3,15 @@ import "@/styles/valentina.css";
 import { Site } from "@/components/valentina/Site";
 export const metadata: Metadata = {
   title: {
-    default: "Gata Arrumada | Moda Feminina em Campo Largo",
-    template: "%s | Gata Arrumada",
+    default: "Gata Campo Largo | Moda Feminina em Campo Largo",
+    template: "%s | Gata Campo Largo",
   },
   description:
-    "Conheça a seleção de moda feminina da Gata Arrumada em Campo Largo, Paraná. Demonstração de catálogo com atendimento pelo WhatsApp.",
+    "Catálogo e prévia exclusiva da Gata Campo Largo. Moda feminina contemporânea, alfaiataria e peças selecionadas em Campo Largo - PR.",
   robots: { index: false, follow: false },
   icons: { icon: "/icon.svg" },
 };
-export const viewport: Viewport = { themeColor: "#fffafc" };
+export const viewport: Viewport = { themeColor: "#fbf9f6" };
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" data-scroll-behavior="smooth">

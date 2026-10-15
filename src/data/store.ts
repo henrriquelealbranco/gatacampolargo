@@ -1,7 +1,8 @@
 import type { ShopProduct } from "../lib/commerce";
 
 export const store = {
-  name: "Gata Arrumada",
+  name: "Gata Campo Largo",
+  brandDisplay: "GATA",
   subtitle: "Moda Feminina",
   city: "Campo Largo, Paraná",
   hours: "Seg–Sex 9h–18h | Sáb 9h–15h",
@@ -11,8 +12,8 @@ export const store = {
   whatsappSource:
     "Link wa.me/message/IBJF2M65K7BDC1 confirmado no perfil público @gatacampolargo pelo Chrome do usuário em 15/10/2026.",
   demoNotice:
-    "Demonstração de layout comercial para Gata Arrumada. Produtos e condições sujeitos à confirmação da loja.",
-  tagline: "Seu próximo look favorito está aqui! ✨",
+    "Demonstração comercial de layout para Gata Campo Largo desenvolvida por Véllum. Fotografias editoriais conceituais para demonstração de prévia comercial.",
+  tagline: "Elegância atemporal, feita para o seu momento.",
 };
 
 export type Product = ShopProduct & {
@@ -23,7 +24,7 @@ export type Product = ShopProduct & {
   tag?: string;
 };
 
-const image = (name: string) => `/images/gata/${name}.webp`;
+const image = (name: string) => `/images/editorial/${name}.webp`;
 
 export const categories = [
   "Vestidos",
@@ -35,122 +36,99 @@ export const categories = [
 
 export const products: Product[] = [
   {
-    id: "conjunto-linho-richelieu",
-    slug: "conjunto-linho-bordado-richelieu",
-    name: "Conjunto Linho Bordado Richelieu",
+    id: "conjunto-alfaiataria-linho",
+    slug: "conjunto-alfaiataria-linho-areia",
+    name: "Conjunto Alfaiataria em Linho Areia",
     category: "Conjuntos",
-    sizes: ["P", "M", "G"],
+    sizes: ["36", "38", "40", "42"],
     price: null,
-    images: [image("conjunto-linho-richelieu"), image("detalhe-floral-denim")],
+    images: [image("conjunto-alfaiataria-linho"), image("conjunto-linho-detalhe")],
     description:
-      "Top corset estruturado tomara-que-caia e calça em alfaiataria de linho areia com bordados vazados e renda guipir branca nas laterais.",
-    tag: "Destaque da Coleção",
+      "Tailleur em linho areia de alta gramatura com bordados botânicos aplicados, caimento reto e lapela clássica.",
+    tag: "Destaque Editorial",
   },
   {
-    id: "vestido-chemise-marsala",
-    slug: "vestido-chemise-listrado-marsala",
-    name: "Vestido Chemise Listrado Marsala",
+    id: "vestido-festa-plissado",
+    slug: "vestido-longo-plissado-serenity",
+    name: "Vestido Longo Plissado Serenity",
     category: "Vestidos",
-    sizes: ["P", "M", "G"],
+    sizes: ["36", "38", "40", "42"],
     price: null,
-    images: [image("vestido-chemise-marsala"), image("camisa-listrada-marsala")],
+    images: [image("vestido-festa-plissado"), image("vestido-plissado-detalhe")],
     description:
-      "Vestido maxi com gola halter, abotoamento frontal e cinto faixa para ajuste na cintura em elegante padronagem listrada marsala.",
-    tag: "Novidade",
+      "Vestido de gala em musseline plissada fluida com decote transpassado e saia em degradê suave azul serenity.",
+    tag: "Moda Festa",
   },
   {
-    id: "conjunto-nautico-listrado",
-    slug: "conjunto-nautico-peplum-listrado",
-    name: "Conjunto Náutico Peplum Listrado",
-    category: "Conjuntos",
-    sizes: ["P", "M", "G"],
-    price: null,
-    images: [image("conjunto-nautico-listrado"), image("look-resort-cocktail")],
-    description:
-      "Corset tomara-que-caia com modelagem peplum marcante acompanhado de shorts de alfaiataria em listrado vermelho e off-white.",
-    tag: "Na vitrine",
-  },
-  {
-    id: "saia-poa-marrom",
-    slug: "saia-longa-evase-poa-marrom",
-    name: "Saia Longa Evasê Poá Marrom",
+    id: "saia-evase-poa",
+    slug: "saia-evase-poa-chocolate",
+    name: "Saia Midi Evasê Poá Chocolate",
     category: "Saias",
     sizes: ["P", "M", "G"],
     price: null,
-    images: [image("saia-poa-marrom"), image("editorial-calca-marrom")],
+    images: [image("saia-evase-poa"), image("saia-poa-detalhe")],
     description:
-      "Modelagem fluida evasê em poá marrom com microbolinhas brancas. Peça atemporal que combina perfeitamente com croppeds e camisas.",
-    tag: "Tendência",
+      "Saia fluida com padronagem poá clássica em fundo marrom chocolate, cintura alta estruturada e movimento elegante.",
+    tag: "Ateliê",
   },
   {
-    id: "vestido-longo-turquesa",
-    slug: "vestido-festa-turquesa-capa",
-    name: "Vestido de Festa Turquesa com Capa",
-    category: "Vestidos",
-    sizes: ["P", "M", "G"],
-    price: null,
-    images: [image("vestido-longo-turquesa"), image("vestido-azul-serenity")],
-    description:
-      "Vestido de gala em tom turquesa deslumbrante com decote drapeado e mangas capa esvoaçantes que garantem movimento e sofisticação.",
-    tag: "Moda Festa",
-  },
-  {
-    id: "vestido-azul-serenity",
-    slug: "vestido-longo-plissado-azul-serenity",
-    name: "Vestido Plissado Azul Serenity",
-    category: "Vestidos",
-    sizes: ["P", "M", "G"],
-    price: null,
-    images: [image("vestido-azul-serenity"), image("vestido-longo-turquesa")],
-    description:
-      "Musseline delicada em plissado fluido, tonalidade azul serenity suave, fenda lateral e mangas em capa esvoaçante.",
-    tag: "Moda Festa",
-  },
-  {
-    id: "camisa-cetim-champagne",
-    slug: "camisa-acetinada-champagne-alfaiataria",
-    name: "Camisa Acetinada Champagne & Calça Marrom",
+    id: "camisa-seda-champagne",
+    slug: "camisa-acetinada-champagne",
+    name: "Camisa Acetinada Champagne",
     category: "Blusas",
     sizes: ["P", "M", "G"],
     price: null,
-    images: [image("camisa-cetim-champagne"), image("editorial-calca-marrom")],
+    images: [image("camisa-seda-champagne"), image("camisa-champagne-detalhe")],
     description:
-      "Camisa em cetim de toque macio e brilho champagne sofisticado, acompanhada de calça marrom em corte impecável.",
-    tag: "Chic Contemporâneo",
+      "Blusa de seda acetinada com gola drapeada suave, punhos alongados e acabamento impecável.",
+    tag: "Clássico",
   },
   {
-    id: "camisa-listrada-marsala",
-    slug: "camisa-alongada-listrada-marsala",
-    name: "Camisa Alongada Listrada Marsala",
-    category: "Blusas",
-    sizes: ["P", "M", "G"],
-    price: null,
-    images: [image("camisa-listrada-marsala"), image("vestido-chemise-marsala")],
-    description:
-      "Camisa de alfaiataria contemporânea com listras verticais em tom marsala, punhos alongados e caimento impecável.",
-  },
-  {
-    id: "semijoias-acessorios",
-    slug: "cartela-semijoias-cristais-gata-arrumada",
-    name: "Cartela Semijoias & Cristais Gata Arrumada",
+    id: "semijoias-cristais-luxo",
+    slug: "conjunto-gota-cristais-ouro",
+    name: "Conjunto Gota Cristais & Ouro",
     category: "Acessórios",
     sizes: ["Único"],
     price: null,
-    images: [image("semijoias-acessorios")],
+    images: [image("semijoias-cristais-luxo"), image("semijoias-detalhe")],
     description:
-      "Conjuntos de brincos e colares com cristais nobres facetados em lapidação gota e oval na embalagem personalizada Gata Arrumada.",
+      "Colar e brincos com pedras em lapidação nobre facetada e acabamento com banho em ouro e cravação de zircônias.",
     tag: "Acessórios",
   },
   {
-    id: "look-resort-cocktail",
-    slug: "look-resort-primavera-verao",
-    name: "Look Resort Primavera/Verão",
+    id: "tailleur-camel-estruturado",
+    slug: "tailleur-estruturado-camel",
+    name: "Tailleur Estruturado Camel",
     category: "Conjuntos",
+    sizes: ["36", "38", "40", "42"],
+    price: null,
+    images: [image("editorial-look-luxo"), image("editorial-luxo-detalhe")],
+    description:
+      "Blazer clássico em lã fria e algodão penteado acompanhado de calça pantalona com vinco impecável.",
+    tag: "Alfaiataria",
+  },
+  {
+    id: "colete-tricot-offwhite",
+    slug: "colete-tricot-canelado-offwhite",
+    name: "Colete Tricot Canelado Off-White",
+    category: "Blusas",
     sizes: ["P", "M", "G"],
     price: null,
-    images: [image("look-resort-cocktail"), image("saia-poa-marrom")],
+    images: [image("saia-poa-detalhe"), image("saia-evase-poa")],
     description:
-      "Conjunto leve e refrescante com estampa poá clássica, feito sob medida para passeios, fins de semana e viagens ensolaradas.",
-    tag: "Primavera/Verão",
+      "Tricot macio com gola canelada, perfeito para composições e sobreposições atemporais.",
+    tag: "Essenciais",
+  },
+  {
+    id: "vestido-musseline-festa",
+    slug: "vestido-evase-drapeado-festa",
+    name: "Vestido Evasê Drapeado Festa",
+    category: "Vestidos",
+    sizes: ["36", "38", "40"],
+    price: null,
+    images: [image("vestido-plissado-detalhe"), image("vestido-festa-plissado")],
+    description:
+      "Modelagem fluida com drapeado artesanal no busto e caimento leve em tons suaves para celebrações.",
+    tag: "Moda Festa",
   },
 ];

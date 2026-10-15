@@ -23,10 +23,10 @@ export default function ProductCard({
         <span className="product-badge">
           {product.illustrative
             ? "Imagem ilustrativa"
-            : product.tag || "Gata Arrumada"}
+            : product.tag || "Editorial"}
         </span>
         <span className="photo-arrow">
-          <ArrowUpRight size={20} />
+          <ArrowUpRight size={16} />
         </span>
       </Link>
       <div className="product-card-info">
@@ -35,7 +35,7 @@ export default function ProductCard({
           <Link href={`/produto/${product.slug}`}>{product.name}</Link>
         </h3>
         <p>{formatPrice(product.price)}</p>
-        <small>Exemplo da demonstração</small>
+        <small>Disponibilidade sob consulta</small>
       </div>
     </article>
   );

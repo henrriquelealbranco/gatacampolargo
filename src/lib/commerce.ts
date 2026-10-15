@@ -78,14 +78,14 @@ export const formatPrice = (price: number | null) =>
     : price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 export function makeOrderMessage(bag: Item[], products: ShopProduct[]): string {
   return [
-    "Olá, Gata Arrumada! Montei esta seleção na demonstração e gostaria de confirmar valores, tamanhos e disponibilidade:",
+    "Olá, Gata Campo Largo! Montei esta seleção na prévia comercial e gostaria de consultar valores, tamanhos e disponibilidade:",
     ...bag.map((i) => {
       const p = products.find((p) => p.id === i.id);
       return p
         ? `• ${p.name} | tamanho ${i.size} | quantidade ${i.quantity} | ${formatPrice(p.price)}`
         : "";
     }),
-    "Os tamanhos e produtos são exemplos da demonstração. Aguardo a confirmação da loja.",
+    "Os tamanhos e produtos são exemplos da demonstração. Poderia confirmar a disponibilidade e valores com a loja?",
   ]
     .filter(Boolean)
     .join("\n");

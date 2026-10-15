@@ -27,7 +27,7 @@ export default function Bag() {
   return (
     <div className="container bag-page">
       <div className="page-intro">
-        <span className="eyebrow">SUA SELEÇÃO GATA ARRUMADA</span>
+        <span className="eyebrow">SELEÇÃO DE PEÇAS · GATA CAMPO LARGO</span>
         <h1>Sua sacola.</h1>
         <p>
           Peças escolhidas por você. Uma conversa para confirmar os detalhes.
@@ -110,7 +110,7 @@ export default function Bag() {
             </div>
             <p>
               Os valores, as medidas e a disponibilidade serão confirmados pela
-              Gata Arrumada.
+              Gata Campo Largo.
             </p>
             <WhatsAppLink message={message} className="button">
               <MessageCircle size={20} />

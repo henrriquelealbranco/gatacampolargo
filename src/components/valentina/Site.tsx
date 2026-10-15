@@ -7,7 +7,6 @@ import {
   type ReactNode,
 } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   ArrowUpRight,
@@ -21,6 +20,7 @@ import {
 } from "lucide-react";
 import { products, store } from "@/data/store";
 import { addItem, restoreBag, whatsappUrl, type Item } from "@/lib/commerce";
+
 type BagContext = {
   bag: Item[];
   ready: boolean;
@@ -29,16 +29,19 @@ type BagContext = {
   update: (id: string, size: string, quantity: number) => void;
   remove: (id: string, size: string) => void;
 };
+
 const Context = createContext<BagContext | null>(null);
+
 export function useBag() {
   const value = useContext(Context);
   if (!value) throw new Error("Bag provider missing");
   return value;
 }
+
 export function WhatsAppLink({
   children,
   className = "button",
-  message = "Olá, Gata Arrumada! Gostaria de conhecer melhor as peças da loja.",
+  message = "Olá, Gata Campo Largo! Gostaria de consultar as peças da coleção.",
   label,
 }: {
   children: ReactNode;
@@ -66,6 +69,7 @@ export function WhatsAppLink({
     </div>
   );
 }
+
 export function Site({ children }: { children: ReactNode }) {
   const [bag, setBag] = useState<Item[]>([]),
     [ready, setReady] = useState(false),
@@ -73,29 +77,34 @@ export function Site({ children }: { children: ReactNode }) {
     [menu, setMenu] = useState(false),
     [search, setSearch] = useState(false);
   const pathname = usePathname();
+
   useEffect(() => {
     try {
-      setBag(restoreBag(localStorage.getItem("gata-arrumada-bag-v1"), products));
+      setBag(restoreBag(localStorage.getItem("gata-campo-largo-bag-v1"), products));
     } catch {
       setStorageError(true);
     }
     setReady(true);
   }, []);
+
   useEffect(() => {
     if (ready)
       try {
-        localStorage.setItem("gata-arrumada-bag-v1", JSON.stringify(bag));
+        localStorage.setItem("gata-campo-largo-bag-v1", JSON.stringify(bag));
       } catch {
         setStorageError(true);
       }
   }, [bag, ready]);
+
   useEffect(() => {
     setMenu(false);
     setSearch(false);
   }, [pathname]);
+
   const remove = (id: string, size: string) =>
     setBag((b) => b.filter((i) => i.id !== id || i.size !== size));
   const count = bag.reduce((n, i) => n + i.quantity, 0);
+
   return (
     <Context.Provider
       value={{
@@ -119,7 +128,7 @@ export function Site({ children }: { children: ReactNode }) {
         Pular para o conteúdo
       </a>
       <div className="announcement">
-        Seu próximo look favorito está aqui! ✨ <span>Gata Arrumada · Campo Largo</span>
+        Prévia de Apresentação Comercial <span>Gata Campo Largo · Moda Feminina</span>
       </div>
       <header className="site-header">
         <div className="header-inner">
@@ -135,26 +144,16 @@ export function Site({ children }: { children: ReactNode }) {
           <Link
             className="wordmark"
             href="/"
-            aria-label="Gata Arrumada — início"
+            aria-label="Gata Campo Largo — início"
           >
-            <Image
-              src="/images/gata/logo.webp"
-              alt="Logo Gata Arrumada"
-              width={44}
-              height={44}
-              className="wordmark-logo"
-              priority
-            />
-            <div className="wordmark-text">
-              <span>GATA ARRUMADA</span>
-              <small>MODA FEMININA · CAMPO LARGO</small>
-            </div>
+            <span className="wordmark-main">{store.brandDisplay}</span>
+            <span className="wordmark-sub">CAMPO LARGO</span>
           </Link>
           <nav className="desktop-nav" aria-label="Navegação principal">
-            <Link href="/colecao">Coleção</Link>
-            <Link href="/#novidades">Novidades</Link>
-            <Link href="/#looks">Inspire-se</Link>
+            <Link href="/colecao">Catálogo</Link>
+            <Link href="/#editorial">Editorial</Link>
             <Link href="/#sobre">A Loja</Link>
+            <Link href="/#contato">Atendimento</Link>
           </nav>
           <div className="header-actions">
             <button
@@ -183,103 +182,89 @@ export function Site({ children }: { children: ReactNode }) {
             aria-label="Navegação móvel"
           >
             <Link href="/colecao" onClick={() => setMenu(false)}>
-              Coleção
+              Catálogo
             </Link>
-            <Link href="/#novidades" onClick={() => setMenu(false)}>
-              Novidades
-            </Link>
-            <Link href="/#looks" onClick={() => setMenu(false)}>
-              Inspire-se
+            <Link href="/#editorial" onClick={() => setMenu(false)}>
+              Editorial
             </Link>
             <Link href="/#sobre" onClick={() => setMenu(false)}>
               A Loja
+            </Link>
+            <Link href="/#contato" onClick={() => setMenu(false)}>
+              Atendimento
             </Link>
           </nav>
         )}
         {search && (
           <form id="site-search" action="/colecao" className="header-search">
-            <label htmlFor="global-search">O que você procura?</label>
+            <label htmlFor="global-search">Pesquisar no catálogo:</label>
             <div>
               <input
                 id="global-search"
                 name="busca"
-                placeholder="Experimente vestido, conjunto, saia, blusa..."
+                placeholder="Busque por vestidos, conjuntos, linho, saias..."
                 autoFocus
               />
               <button className="button" type="submit">
-                Buscar <Search size={18} />
+                Buscar <Search size={16} />
               </button>
             </div>
           </form>
         )}
       </header>
       <main id="conteudo">{children}</main>
-      <footer className="site-footer">
+      <footer className="site-footer" id="contato">
         <div className="footer-grid container">
           <div>
             <Link href="/" className="wordmark">
-              <Image
-                src="/images/gata/logo.webp"
-                alt="Logo Gata Arrumada"
-                width={40}
-                height={40}
-                className="wordmark-logo"
-              />
-              <div className="wordmark-text">
-                <span>GATA ARRUMADA</span>
-                <small>MODA FEMININA · CAMPO LARGO</small>
-              </div>
+              <span className="wordmark-main">{store.brandDisplay}</span>
+              <span className="wordmark-sub">CAMPO LARGO</span>
             </Link>
             <p>
-              Seu próximo look favorito está aqui! ✨
+              Moda contemporânea e elegância atemporal.
               <br />
-              Moda feminina, moderna e elegante.
-              <br />
+              Prévia de experiência digital desenvolvida com padrão de estúdio.
+            </p>
+          </div>
+          <div>
+            <h3>Navegação</h3>
+            <Link href="/colecao">Catálogo Completo</Link>
+            <Link href="/#editorial">Ensaio Editorial</Link>
+            <Link href="/#sobre">Sobre a Loja</Link>
+            <Link href="/sacola">Sacola de Peças</Link>
+          </div>
+          <div>
+            <h3>Atendimento & Loja Física</h3>
+            <a href={store.instagram} target="_blank" rel="noopener noreferrer">
+              <Instagram size={16} /> {store.instagramHandle}
+            </a>
+            <WhatsAppLink className="footer-link">
+              <MessageCircle size={16} /> Contato via WhatsApp
+            </WhatsAppLink>
+            <p>
+              <MapPin size={16} /> {store.city}
+            </p>
+            <p style={{ fontSize: "11px", color: "var(--muted)", marginTop: "2px" }}>
               {store.hours}
             </p>
           </div>
-          <div>
-            <h3>Explore</h3>
-            <Link href="/colecao">Nossa coleção</Link>
-            <Link href="/#sobre">Conheça a loja</Link>
-            <Link href="/sacola">Sua sacola</Link>
-          </div>
-          <div>
-            <h3>Vamos conversar</h3>
-            <a href={store.instagram} target="_blank" rel="noopener noreferrer">
-              <Instagram size={17} /> {store.instagramHandle}
-            </a>
-            <WhatsAppLink className="footer-link">
-              <MessageCircle size={17} /> Atendimento pelo WhatsApp
-            </WhatsAppLink>
-            <p>
-              <MapPin size={17} />
-              {store.city}
-            </p>
-          </div>
-          <Image
-            className="footer-logo"
-            src="/images/gata/logo.webp"
-            alt="Logo Gata Arrumada"
-            width={90}
-            height={90}
-          />
         </div>
         <div className="footer-bottom container">
-          <span>Gata Arrumada | Moda Feminina · Campo Largo - PR</span>
+          <span>Gata Campo Largo · Moda Feminina</span>
           <span>{store.demoNotice}</span>
         </div>
       </footer>
       <WhatsAppLink
         className="floating-whatsapp"
-        label="Fale com a Gata Arrumada pelo WhatsApp"
+        label="Fale com a Gata Campo Largo no WhatsApp"
       >
-        <MessageCircle size={22} />
-        <span>Fale com a Gata Arrumada</span>
+        <MessageCircle size={17} />
+        <span>Fale no WhatsApp</span>
       </WhatsAppLink>
     </Context.Provider>
   );
 }
+
 export function TextLink({
   href,
   children,
@@ -290,7 +275,7 @@ export function TextLink({
   return (
     <Link className="text-link" href={href}>
       {children}
-      <ArrowUpRight size={18} />
+      <ArrowUpRight size={16} />
     </Link>
   );
 }

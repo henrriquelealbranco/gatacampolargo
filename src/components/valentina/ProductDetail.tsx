@@ -64,7 +64,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         </div>
         <div className="product-detail">
           <span className="eyebrow">
-            {product.category} · GATA ARRUMADA
+            {product.category} · GATA CAMPO LARGO
           </span>
           <h1>{product.name}</h1>
           <p className="product-price">{formatPrice(product.price)}</p>
@@ -137,14 +137,14 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
           <WhatsAppLink
             className="text-link"
-            message={`Olá, Gata Arrumada! Gostaria de confirmar o valor, as medidas e a disponibilidade de ${product.name}${size ? " no tamanho " + size : ""}.`}
+            message={`Olá, Gata Campo Largo! Gostaria de consultar o valor, as medidas e a disponibilidade de ${product.name}${size ? " no tamanho " + size : ""}.`}
           >
             <MessageCircle size={18} />
             Pergunte sobre esta peça
           </WhatsAppLink>
           <p className="small-note">
-            Produto de exemplo da demonstração. Valor, tamanhos e
-            disponibilidade sujeitos à confirmação com a Gata Arrumada.
+            Peça apresentada para demonstração comercial. Valor, medidas e
+            disponibilidade sujeitos à confirmação com a Gata Campo Largo.
           </p>
         </div>
       </div>
