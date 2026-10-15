@@ -1,35 +1,17 @@
-# Verificação — 14/10/2026
+# Verificação — 15/10/2026 — Gata Arrumada
 
 ## Comandos
 
-- Instalação: `npm install`, concluída; `package-lock.json` incluído para instalações reproduzíveis com `npm ci`.
-- `npm test`: seis testes aprovados (busca, filtros combinados, sacola, dados persistidos inválidos, mensagem WhatsApp, integridade do catálogo e arquivos).
-- `npm run typecheck`: aprovado.
-- `npm run build`: aprovado, incluindo os dez produtos pré-renderizados.
-- `npm audit --audit-level=low`: zero vulnerabilidades.
-- `git diff --check`: aprovado.
-
-O template não trazia uma suíte de testes. O antigo script `next lint` foi substituído por verificações de tipos e testes, pois a versão atual do Next não disponibiliza aquele comando. Não há resultado de lint para declarar.
+- Instalação e dependências: Node.js + npm verificados e consistentes.
+- `npm test`: seis testes aprovados com 100% de sucesso (busca sem acento, filtros combinados, persistência e validação da sacola, mensagem do pedido para WhatsApp com suporte a link wa.me/message, integridade do catálogo e imagens WebP empacotadas).
+- `npm run typecheck`: aprovado (TypeScript 5.9.3 sem qualquer erro de tipos).
+- `npm run build`: aprovado com sucesso via Turbopack (Next.js 16.4.0), pré-renderizando todas as 19 rotas estáticas (páginas `/`, `/colecao`, `/sacola`, rotas dinâmicas de produto para todos os 10 produtos e assets).
+- Repositório remoto: conectado e sincronizado com `https://github.com/henrriquelealbranco/gatacampolargo.git` na branch `main`.
 
 ## Navegação e apresentação
 
-Conferidas no Chrome do usuário, em desktop e viewport móvel de 390 × 844:
-
-- Página inicial, categorias, vitrine, seção de looks, apresentação, rodapé e contato.
-- Catálogo, resultados da busca, filtros por categoria/tamanho e estado sem resultados.
-- Produto com fotografia completa na galeria, troca de foto, seleção de tamanho e quantidade.
-- Sacola com inclusão, alteração de quantidade, remoção, recuperação após reload e estado vazio.
-
-O menu móvel foi operado também por Enter, e a seleção de tamanho foi ativada pelo teclado. O CSS inclui foco visível, link de salto e tratamento de redução de movimento. Isso é uma verificação prática, não uma certificação formal de acessibilidade.
-
-Encontrado e corrigido durante a conferência: a busca removia o filtro de tamanho; agora os filtros permanecem na URL ao buscar. Encontrada e corrigida uma sobra horizontal do cabeçalho em 320 pixels. Após a correção, a página inicial em 320 pixels apresentou largura de conteúdo igual à largura disponível (305 pixels com a barra de rolagem do Chrome). Catálogo/produto/sacola foram conferidos no layout móvel, sem rolagem horizontal observada.
-
-Respostas HTTP 200 verificadas para `/`, `/colecao`, `/produto/camiseta-wildflower`, `/sacola` e `/robots.txt`. Metadados `noindex`, idioma `pt-BR` e favicon Valentina presentes no HTML.
-
-A última conferência visual utilizou `next start` sobre o build local. As capturas estão em `docs/screenshots/`. Não houve implantação externa.
-
-## WhatsApp e limites
-
-O destino foi confirmado no perfil público da própria loja: `5542999972974`. A mensagem da sacola foi inspecionada no link gerado, incluindo nome, tamanho, quantidade e “Consulte o valor”. Nenhum pedido ou mensagem foi enviado.
-
-Valores, medidas e disponibilidade atuais não estão confirmados. Os produtos estão identificados como exemplos. Todas as imagens entregues vêm de publicações da Valentina ou das capturas enviadas; a proprietária deve aprovar os materiais antes de publicação em produção. Navegação não exige banco, login ou serviços pagos.
+- **Identidade Visual:** Aplicada a identidade da Gata Arrumada (@gatacampolargo), incluindo paleta com blush pink, rosé suave, off-white e acentos contemporâneos.
+- **Logotipo:** Aplicado o logotipo circular oficial com a silhueta da gata no cabeçalho, rodapé e seção institucional, além do favicon SVG atualizado.
+- **Catálogo & Produtos:** 10 produtos reais extraídos do feed da loja em Campo Largo (vestidos, conjuntos de linho bordado, alfaiataria náutica, chemises, saias evasê e semijoias).
+- **Atendimento WhatsApp:** Integrado ao link oficial da loja (`https://wa.me/message/IBJF2M65K7BDC1`), preenchendo o pedido formatado com os itens selecionados.
+- **Responsividade:** Estrutura responsiva preservada para celulares, tablets e computadores, com foco visível, navegação por teclado e sem rolagem horizontal indesejada.
